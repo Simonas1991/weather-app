@@ -1,4 +1,9 @@
 import React, { useState } from 'react'
+
+// css
+import './Form.css'
+
+// components
 import Card from './Card'
 
 const Form = () => {
@@ -15,33 +20,35 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}&days=3`, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": "63bcefeea3msha2622c5e47aacb4p1e7438jsn496398473fed",
-                "x-rapidapi-host": "weatherapi-com.p.rapidapi.com"
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                setWeatherData(data)
-                setLoaded(true)
+        if (location !== '') {
+
+            fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}&days=3`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-key": "63bcefeea3msha2622c5e47aacb4p1e7438jsn496398473fed",
+                    "x-rapidapi-host": "weatherapi-com.p.rapidapi.com"
+                }
             })
-            .catch(err => {
-                console.error(err);
-            });
-        setLocation('');
+                .then(response => response.json())
+                .then(data => {
+                    setWeatherData(data)
+                    setLoaded(true)
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+            setLocation('');
+        }
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label>Enter city</label>
-                <br />
+            <form onSubmit={handleSubmit} className='form'>
+                <label >Enter city</label>
                 <input type="text" value={location} onChange={inputChange} />
-                <br />
-                <input type="submit" />
+                <button>Submit</button>
             </form>
+            <hr />
             <Card weatherData={weatherData} isLoaded={loaded} />
         </>
     )
