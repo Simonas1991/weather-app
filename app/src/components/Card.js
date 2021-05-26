@@ -10,22 +10,27 @@ const Card = ({ weatherData, isLoaded }) => {
     return (
         <div>
             {isLoaded ?
-                <>
-                    <h2>{weatherData.location.name}, {weatherData.location.country}</h2>
-                    <h3>Current weather:</h3>
-                    <p>{weatherData.current.temp_c} °C</p>
-                    <img src={weatherData.current.condition.icon} alt="" />
-                    <hr />
-                    <h3>Forecast:</h3>
-                    {weatherData.forecast.forecastday.map(({ date, day }, i) => (
-                        <div key={i}>
-                            <p>{date}, {day.avgtemp_c} °C</p>
-                            <img src={day.condition.icon} alt="" />
+                <div className='card-container'>
+                    <div className='current-card'>
+                        <div >
+                            <h2>{weatherData.location.name}, {weatherData.location.country}</h2>
+                            <h3>Current weather :</h3>
+                            <p>{weatherData.current.temp_c} °C</p>
+                            <img src={weatherData.current.condition.icon} alt="" />
                         </div>
-                    )
-                    )}
+                    </div>
+                    <h3>Forecast :</h3>
+                    <div className='forecast-cards'>
+                        {weatherData.forecast.forecastday.map(({ date, day }, i) => (
+                            <div key={i} >
+                                <p>{date}, {day.avgtemp_c} °C</p>
+                                <img src={day.condition.icon} alt="" />
+                            </div>
+                        )
+                        )}
+                    </div>
 
-                </>
+                </div>
                 :
                 <p>Waiting...</p>
             }

@@ -1,0 +1,11 @@
+.card-container {}
+
+.current-card {
+    display: flex;
+    margin: 50px auto;
+}
+
+.forecast-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

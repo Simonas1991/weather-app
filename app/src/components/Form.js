@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 // css
 import './Form.css'
@@ -48,7 +48,6 @@ const Form = () => {
                 <input type="text" value={location} onChange={inputChange} />
                 <button>Submit</button>
             </form>
-            <hr />
             <Card weatherData={weatherData} isLoaded={loaded} />
         </>
     )
