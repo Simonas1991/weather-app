@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    color: #fff;
 }
 
 .form label {
@@ -18,14 +19,15 @@
     font-size: 20px;
 }
 
-.form input{
+.form input {
     border: none;
     border-bottom: 1px solid rgba(6, 24, 44, 0.4);
     background-color: transparent;
 }
 
-.form input:focus{
+.form input:focus {
     outline: none;
+    color: #fff;
 }
 
 .form button {
@@ -36,4 +38,5 @@
     margin: 0 auto;
     padding: 2px;
     border-radius: 5px;
+    color: #fff;
 }

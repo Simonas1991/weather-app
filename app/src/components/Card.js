@@ -1,41 +1,24 @@
-import React from 'react';
+// libs
+import React from 'react'
 
-// css
-import './Card.css'
-
-const Card = ({ weatherData, isLoaded }) => {
-
-    console.log(weatherData);
+const Card = ({ date, avgtemp_c, icon, wind_degree }) => {
 
     return (
         <div>
-            {isLoaded ?
-                <div className='card-container'>
-                    <div className='current-card'>
-                        <div >
-                            <h2>{weatherData.location.name}, {weatherData.location.country}</h2>
-                            <h3>Current weather :</h3>
-                            <p>{weatherData.current.temp_c} °C</p>
-                            <img src={weatherData.current.condition.icon} alt="" />
-                        </div>
-                    </div>
-                    <h3>Forecast :</h3>
-                    <div className='forecast-cards'>
-                        {weatherData.forecast.forecastday.map(({ date, day }, i) => (
-                            <div key={i} >
-                                <p>{date}, {day.avgtemp_c} °C</p>
-                                <img src={day.condition.icon} alt="" />
-                            </div>
-                        )
-                        )}
-                    </div>
-
-                </div>
+            <p>{date}</p>
+            <p>{avgtemp_c} °C</p>
+            {wind_degree ?
+                <>
+                    <p>Wind direction:</p>
+                    <p style={{ transform: `rotateZ(${wind_degree}deg)` }}>↑</p>
+                </>
                 :
-                <p>Waiting...</p>
+                <>
+                </>
             }
+            <img src={icon} alt="" />
         </div>
     )
 }
 
-export default Card;
+export default Card

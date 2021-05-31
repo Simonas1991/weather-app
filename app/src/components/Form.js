@@ -1,10 +1,11 @@
+// libs
 import React, { useState } from 'react';
 
 // css
 import './Form.css'
 
 // components
-import Card from './Card'
+import Cards from './Cards'
 
 const Form = () => {
     // hooks
@@ -48,7 +49,7 @@ const Form = () => {
                 <input type="text" value={location} onChange={inputChange} />
                 <button>Submit</button>
             </form>
-            <Card weatherData={weatherData} isLoaded={loaded} />
+            <Cards weatherData={weatherData} isLoaded={loaded} />
         </>
     )
 }
